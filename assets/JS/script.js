@@ -45,31 +45,32 @@ function printArticleInfo(data){
     // code here adds content from data
     // takes data appends to page
     // print title and url results 
-    var cardEl = document.createElement("div")
-    cardEl.classList.add("card");
-    var cardHead = document.createElement("div");
-    cardHead.classList.add("card-header");
-    var cardContainer = document.createElement("div");
-    cardContainer.classList.add("card-body");
-    var cardTitle = document.createElement("h5");
-    cardTitle.classList.add("card-title");
-    var cardText = document.createElement("p");
-    cardText.classList.add("card-text");
-    var cardLink = document.createElement("a");
-    cardLink.classList.add("btn", "btn-primary");
-    var cardsPL = document.getElementById('rightColcontainer')
+    for (var i = 0; i < data.results.length; i++) {
+        var cardEl = document.createElement("div")
+        cardEl.classList.add("card");
+        var cardHead = document.createElement("div");
+        cardHead.classList.add("card-header");
+        var cardContainer = document.createElement("div");
+        cardContainer.classList.add("card-body");
+        var cardTitle = document.createElement("h5");
+        cardTitle.classList.add("card-title");
+        var cardText = document.createElement("p");
+        cardText.classList.add("card-text");
+        var cardLink = document.createElement("a");
+        cardLink.classList.add("btn", "btn-primary");
+        var cardsPL = document.getElementById('rightColcontainer')
 
-    cardTitle.textContent = data.results[1].title;
-    cardText.textContent = data.results[1].description;
-    cardLink.setAttribute("href", data.results[1].url);
-    cardLink.textContent = "View full page";
-    cardHead.textContent = data.results[0].location_state;
-    cardEl.appendChild(cardHead);
-    cardEl.appendChild(cardTitle);
-    cardContainer.appendChild(cardTitle)
-    cardContainer.appendChild(cardText)
-    cardContainer.appendChild(cardLink)
-    cardEl.appendChild(cardContainer);
-    cardsPL.appendChild(cardEl)
-
+        cardTitle.textContent = data.results[i].title;
+        cardText.textContent = data.results[i].description;
+        cardLink.setAttribute("href", data.results[i].url);
+        cardLink.textContent = "View full page";
+        cardHead.textContent = data.results[i].location_state;
+        cardEl.appendChild(cardHead);
+        cardEl.appendChild(cardTitle);
+        cardContainer.appendChild(cardTitle)
+        cardContainer.appendChild(cardText)
+        cardContainer.appendChild(cardLink)
+        cardEl.appendChild(cardContainer);
+        cardsPL.appendChild(cardEl)
+    }
 }
