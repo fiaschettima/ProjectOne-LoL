@@ -57,12 +57,19 @@ function printArticleInfo(data){
     cardText.classList.add("card-text");
     var cardLink = document.createElement("a");
     cardLink.classList.add("btn", "btn-primary");
+    var cardsPL = document.getElementById('rightColcontainer')
+
     cardTitle.textContent = data.results[1].title;
     cardText.textContent = data.results[1].description;
     cardLink.setAttribute("href", data.results[1].url);
-    cardLink.innerHTML = "View full page";
-    cardContainer.appendChild(cardTitle);
-    cardContainer.appendChild(cardText);
-    cardContainer.appendChild(cardLink);
+    cardLink.textContent = "View full page";
+    cardHead.textContent = data.results[0].location_state;
+    cardEl.appendChild(cardHead);
+    cardEl.appendChild(cardTitle);
+    cardContainer.appendChild(cardTitle)
+    cardContainer.appendChild(cardText)
+    cardContainer.appendChild(cardLink)
+    cardEl.appendChild(cardContainer);
+    cardsPL.appendChild(cardEl)
 
 }
