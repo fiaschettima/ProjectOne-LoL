@@ -24,16 +24,16 @@
                 <input type="text" class="form-control" id = "searchParam" placeholder="Search....." aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="sBtn">Search</button>
             </div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" id="formatOps">
               <option selected>Select a format...</option>
-              <option value="1">maps</option>
-              <option value="2">audio recordings</option>
-              <option value="3">photo, print, drawing</option>
-              <option value="4">manuscripts/mixed material</option>
-              <option value="5">newspapers</option>
-              <option value="6">film, videos</option>
-              <option value="7">pritned music</option>
-              <option value="8">archived websites</option>
+              <option value="maps" data-format="maps">maps</option>
+              <option value="audio"data-format="audio">audio recordings</option>
+              <option value="photos" data-format="photos">photo, print, drawing</option>
+              <option value="manuscripts" data-format="manuscripts">manuscripts/mixed material</option>
+              <option value="newspapers" data-format="newspapers">newspapers</option>
+              <option value="film-and-videos" data-format="film-and-videos">film, videos</option>
+              <option value="notated-music" data-format="notated-music">pritned music</option>
+              <option value="websites" data-format="websites">archived websites</option>
             </select>
               
         </div>

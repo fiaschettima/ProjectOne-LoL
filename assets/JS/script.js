@@ -13,9 +13,9 @@
 
 // https://www.loc.gov/maps/?q=civil war&fo=json
 
-function getInfo(topic) {
-    
-    var userEL = "https://www.loc.gov/search/?q=" + topic + "c=25&sb=date&fo=json";
+function getInfo(topic ,format) {
+    // var userEL = "https://www.loc.gov/search/?q=" + topic + "c=25&sb=date&fo=json";
+    userEL = 'https://www.loc.gov/'+format+'/?q'+topic+'&fo=json'
     fetch(userEL).then(function(response) {
         console.log(response)
         return response.json();
@@ -30,23 +30,28 @@ function getInfo(topic) {
 
 var searchBtn = document.getElementById("sBtn");
 var input = document.getElementById("searchParam");
+var selectOps = document.getElementById('formatOps')
+console.log(selectOps)
 searchBtn.addEventListener("click", function(event){
     event.preventDefault();
-    getInfo(input.value);
+   
+    getInfo(input.value, format);
 });
 input.addEventListener('keyup', function(event){
     if(event.code === 'Enter' && input.value !== ''){
         event.preventDefault;
-        getInfo(input.value)
+        getInfo(input.value, format)
     }
 
 })
 function printArticleInfo(data){
     // code here adds content from data
+    var cardEl = document.createElement("div")
+    cardEl.innerHTML = '';
     // takes data appends to page
     // print title and url results 
     for (var i = 0; i < data.results.length; i++) {
-        var cardEl = document.createElement("div")
+
         cardEl.classList.add("card");
         var cardHead = document.createElement("div");
         cardHead.classList.add("card-header");
