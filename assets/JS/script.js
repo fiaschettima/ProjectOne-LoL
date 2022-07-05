@@ -15,14 +15,15 @@
 
 function getInfo(topic) {
     
-    var userEL = "https://www.loc.gov/maps/?q=" + topic + "c=25&sb=date_desc";
+    var userEL = "https://www.loc.gov/search/?q=" + topic + "c=25&sb=date_desc&fo=json";
     fetch(userEL).then(function(response) {
-        
-        // console.log(response);
+        console.log(response)
         return response.json();
 
-    }) .then(function(data){
+    }).then(function(data){
         console.log(data);
+        printArticleInfo(data)
+        // add function here that will print the artiles to the page
     });
 
 }
@@ -33,3 +34,14 @@ searchBtn.addEventListener("click", function(event){
     event.preventDefault();
     getInfo(input.value);
 });
+input.addEventListener('keyup', function(event){
+    if(event.code === 'Enter' && input.value !== ''){
+        event.preventDefault;
+        getInfo(input.value)
+    }
+
+})
+function printArticleInfo(data){
+    // code here adds content from data
+    // takes data appends to page
+}
