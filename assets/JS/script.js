@@ -15,7 +15,7 @@
 
 function getInfo(topic) {
     
-    var userEL = "https://www.loc.gov/search/?q=" + topic + "c=25&sb=date_desc&fo=json";
+    var userEL = "https://www.loc.gov/search/?q=" + topic + "c=25&sb=date&fo=json";
     fetch(userEL).then(function(response) {
         console.log(response)
         return response.json();
@@ -44,4 +44,25 @@ input.addEventListener('keyup', function(event){
 function printArticleInfo(data){
     // code here adds content from data
     // takes data appends to page
+    // print title and url results 
+    var cardEl = document.createElement("div")
+    cardEl.classList.add("card");
+    var cardHead = document.createElement("div");
+    cardHead.classList.add("card-header");
+    var cardContainer = document.createElement("div");
+    cardContainer.classList.add("card-body");
+    var cardTitle = document.createElement("h5");
+    cardTitle.classList.add("card-title");
+    var cardText = document.createElement("p");
+    cardText.classList.add("card-text");
+    var cardLink = document.createElement("a");
+    cardLink.classList.add("btn", "btn-primary");
+    cardTitle.textContent = data.results[1].title;
+    cardText.textContent = data.results[1].description;
+    cardLink.setAttribute("href", data.results[1].url);
+    cardLink.innerHTML = "View full page";
+    cardContainer.appendChild(cardTitle);
+    cardContainer.appendChild(cardText);
+    cardContainer.appendChild(cardLink);
+
 }
